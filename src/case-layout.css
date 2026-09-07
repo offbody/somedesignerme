@@ -1,0 +1,768 @@
+/* Case geometry: one text edge, one media edge and one rhythm across templates. */
+.smart-case {
+  --case-text-gutter: 16px;
+  --case-media-gutter: 8px;
+  --case-inset: calc(var(--case-text-gutter) - var(--case-media-gutter));
+  --case-section-gap: 56px;
+  --case-block-gap: 32px;
+  --case-column-gap: 32px;
+  --case-card-pad: 20px;
+  --case-heading-size: 32px;
+  --case-lead-size: 36px;
+  --case-body-size: 16px;
+  --case-metric-size: 56px;
+  --case-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--case-section-gap);
+  padding-block: var(--case-section-gap);
+}
+
+.smart-case *,
+.smart-case *::before,
+.smart-case *::after {
+  min-width: 0;
+}
+
+.smart-case > .smart-case-module {
+  gap: var(--case-block-gap);
+  margin: 0;
+  max-width: none;
+  padding: 0 var(--case-text-gutter);
+  width: 100%;
+}
+
+.smart-case > :is(.smart-case-project-core, .smart-case-discovery, .smart-case-key-decision, .smart-case-outcome, .research-case-outcome) {
+  padding-inline: var(--case-media-gutter);
+}
+
+.smart-case :is(h2, h3, h4) {
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.smart-case :is(.smart-case-section, .smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section),
+.smart-case :is(.smart-case-validation, .smart-case-field-research, .smart-case-field-result) > header,
+.smart-case .research-case-outcome > header {
+  align-content: start;
+  align-items: start;
+  border: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 0;
+}
+
+.smart-case :is(.smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section),
+.smart-case :is(.smart-case-validation, .smart-case-field-research, .smart-case-field-result) > header {
+  margin-inline: var(--case-inset);
+}
+
+.smart-case .smart-case-section::after {
+  content: none;
+}
+
+.smart-case :is(.smart-case-section, .smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section) > *,
+.smart-case :is(.smart-case-validation, .smart-case-field-research, .smart-case-field-result) > header > *,
+.smart-case .research-case-outcome > header > * {
+  grid-column: 1;
+  grid-row: auto;
+  max-width: none;
+}
+
+.smart-case :is(.smart-case-section, .smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section) h2,
+.smart-case :is(.smart-case-impact, .smart-case-role) > header h2,
+.smart-case .research-case-outcome > header h2,
+.smart-case :is(.smart-case-validation, .smart-case-field-research, .smart-case-field-result) > header h3 {
+  font-size: var(--case-heading-size);
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.smart-case > .smart-case-section h2 {
+  font-size: var(--case-lead-size);
+}
+
+.smart-case :is(.smart-case-copy, .smart-case-project-core-intro > p:last-child, .smart-case-discovery-intro > p:last-child, .smart-case-key-decision-intro > p:last-child, .smart-case-row p:not(.smart-case-pill), .research-case-outcome > header > p:last-child) {
+  font-size: var(--case-body-size);
+  letter-spacing: 0;
+  line-height: 1.5;
+  max-width: none;
+}
+
+.smart-case .smart-case-impact {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case :is(.smart-case-impact, .smart-case-role) > header {
+  align-self: start;
+  border: 0;
+  display: grid;
+  gap: 16px;
+  grid-column: 1;
+  grid-row: auto;
+  padding: 0;
+}
+
+.smart-case .smart-case-impact > header .smart-case-eyebrow {
+  margin: 0;
+}
+
+.smart-case .smart-case-metrics {
+  border: 0;
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.smart-case .smart-case-metrics article {
+  align-content: start;
+  display: grid;
+  gap: 24px;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  padding: 24px 16px 24px 0;
+}
+
+.smart-case .smart-case-metrics article:nth-child(even) {
+  padding: 24px 0 24px 16px;
+}
+
+.smart-case .smart-case-metrics strong {
+  font-size: var(--case-metric-size);
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0;
+}
+
+.smart-case .smart-case-metrics p {
+  font-size: 14px;
+  line-height: 1.45;
+  max-width: none;
+}
+
+.smart-case .case-metric-unit {
+  font-size: 0.45em;
+  margin-left: 0.15em;
+}
+
+.smart-case .smart-case-final .smart-case-metrics strong {
+  font-size: 52px;
+}
+
+.smart-case .smart-case-role {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case .smart-case-role > .smart-case-row-list {
+  grid-column: 1;
+  grid-row: auto;
+}
+
+.smart-case .smart-case-role .smart-case-row {
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 24px 0;
+}
+
+.smart-case .smart-case-role .smart-case-row:first-child {
+  padding-top: 0;
+}
+
+.smart-case .smart-case-meta {
+  gap: 0 24px;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+}
+
+.smart-case .smart-case-meta > div {
+  align-content: start;
+  gap: 12px;
+  padding: 24px 0;
+}
+
+.smart-case .smart-case-meta strong {
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+/* Number and copy occupy explicit cells, independent of content source order. */
+.smart-case .smart-case-project-core-list {
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  margin-inline: var(--case-inset);
+}
+
+.smart-case .smart-case-project-core-list article {
+  align-content: start;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin: 0;
+  min-height: 0;
+  padding: 0 0 24px;
+}
+
+.smart-case .smart-case-project-core-list article > div {
+  gap: 16px;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.smart-case .smart-case-project-core-list article > strong {
+  font-size: 48px;
+  grid-column: 2;
+  grid-row: 1;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.smart-case .smart-case-project-core-list article div > p:last-child {
+  font-size: var(--case-body-size);
+  line-height: 1.5;
+}
+
+.smart-case :is(.smart-case-key-visuals, .mitigation-business-visuals, .mitigation-visual-stack) {
+  align-items: start;
+  gap: 24px;
+}
+
+.smart-case .smart-case-key-visuals figure {
+  gap: 16px;
+}
+
+.smart-case .smart-case-key-visuals img {
+  height: auto;
+}
+
+.smart-case .smart-case-key-visuals figcaption {
+  margin-inline: var(--case-inset);
+}
+
+.smart-case :is(.smart-case-validation, .smart-case-field-research, .smart-case-field-result) {
+  align-items: start;
+  gap: var(--case-block-gap) var(--case-column-gap);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case .smart-case-key-decision .smart-case-field-research > header {
+  display: grid;
+  gap: 16px;
+  grid-column: auto;
+  padding: 0;
+  width: auto;
+}
+
+.smart-case :is(.smart-case-field-stages, .smart-case-ux-decision, .smart-case-concept-copy, .mitigation-pill-rows, .research-case-sample, .research-case-table-wrap, .mitigation-rows),
+.smart-case :is(.smart-case-validation, .smart-case-field-result, .smart-case-validation-result) > .smart-case-table {
+  grid-column: auto;
+  grid-row: auto;
+  margin: 0 var(--case-inset);
+  width: auto;
+}
+
+.smart-case .smart-case-key-decision .smart-case-field-stages {
+  gap: 0;
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-columns: minmax(0, 1fr);
+  width: auto;
+}
+
+.smart-case .smart-case-field-stages .smart-case-row,
+.smart-case .smart-case-ux-decision {
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 24px 0;
+}
+
+.smart-case .smart-case-field-stages .smart-case-row > span {
+  min-height: 0;
+}
+
+.smart-case .smart-case-field-stages .smart-case-row > div,
+.smart-case .smart-case-ux-decision > div {
+  gap: 24px;
+  max-width: none;
+}
+
+.smart-case .mitigation-rows .smart-case-row {
+  gap: 16px;
+  grid-template-columns: 32px minmax(0, 1fr);
+  padding: 24px 0;
+}
+
+.smart-case .mitigation-rows .smart-case-row:first-child {
+  padding-top: 0;
+}
+
+.smart-case .smart-case-row .smart-case-pill,
+.smart-case .smart-case-pills span,
+.smart-case .smart-case-dark-grid div span,
+.smart-case .mitigation-inline-pills .smart-case-pill {
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 100%;
+  padding: 4px 8px;
+}
+
+.smart-case .smart-case-table {
+  align-self: start;
+  padding-right: 0;
+}
+
+.smart-case .smart-case-table > span {
+  font-size: var(--case-body-size);
+  line-height: 1.5;
+  min-height: 0;
+  overflow-wrap: break-word;
+  padding: 20px 12px;
+}
+
+.smart-case .smart-case-table > span[data-column="0"] {
+  padding-left: 0;
+  text-align: left;
+}
+
+.smart-case .research-case-table-wrap .smart-case-table span {
+  padding: 20px 12px;
+}
+
+.smart-case .research-case-table-wrap .smart-case-table span[data-column="0"] {
+  padding-left: 0;
+}
+
+.smart-case :is(.research-case-evidence, .research-case-flow, .research-case-conclusion, .smart-case-discovery-panel, .smart-case-validation-panel, .smart-case-effect.smart-case-key-effect, .mitigation-formula-card),
+.smart-case .mitigation-discovery > .smart-case-key-decision-intro,
+.smart-case .research-case-outcome blockquote {
+  border: 0;
+  gap: var(--case-block-gap);
+  margin: 0;
+  padding: var(--case-card-pad);
+  width: 100%;
+}
+
+.smart-case .research-case-evidence {
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case .research-case-evidence > div {
+  gap: 24px;
+  grid-template-rows: auto 1fr;
+}
+
+.smart-case .research-case-evidence .mitigation-rows {
+  align-self: stretch;
+  margin: 0;
+}
+
+.smart-case .research-case-flow > div {
+  gap: 12px;
+}
+
+.smart-case .research-case-flow strong {
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 44px;
+  padding: 10px 12px;
+}
+
+.smart-case .research-case-conclusion {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case :is(.research-case-conclusion, .research-case-outcome blockquote) > * {
+  grid-column: auto;
+}
+
+.smart-case .research-case-conclusion h2,
+.smart-case .research-case-outcome blockquote > p:last-child {
+  font-size: var(--case-heading-size);
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.smart-case .research-case-outcome > :is(header, .smart-case-metrics) {
+  margin-inline: var(--case-inset);
+}
+
+.smart-case .smart-case-key-effect :is(h2, p:not(.smart-case-eyebrow)),
+.smart-case .mitigation-discovery > .smart-case-key-decision-intro h2 {
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.smart-case .smart-case-discovery-panel,
+.smart-case .smart-case-validation-panel {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-case :is(.smart-case-discovery-panel-copy, .smart-case-validation-panel-head) {
+  gap: 16px;
+}
+
+.smart-case :is(.smart-case-dark-grid, .smart-case-discovery-quotes) {
+  gap: 16px;
+}
+
+.smart-case :is(.smart-case-discovery-quotes article, .smart-case-dark-grid > article) {
+  gap: 20px;
+  min-height: 0;
+  padding: 20px;
+}
+
+.smart-case .smart-case-discovery-quotes article > p,
+.smart-case .smart-case-dark-grid h4 {
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.smart-case .mitigation-outcome > .smart-case-impact {
+  gap: var(--case-block-gap);
+  margin: 0 var(--case-inset);
+  padding: 0;
+  width: auto;
+}
+
+.smart-case .mitigation-formula-card {
+  gap: 32px;
+}
+
+.smart-case .mitigation-formulas {
+  align-items: stretch;
+  gap: 16px;
+}
+
+.smart-case .mitigation-formulas article {
+  gap: 24px;
+  grid-template-rows: auto 1fr;
+  padding: 20px;
+}
+
+.smart-case .mitigation-formulas article > :last-child {
+  align-self: center;
+}
+
+.smart-case .mitigation-formulas article > span {
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.smart-case .mitigation-impact-list {
+  gap: 16px;
+}
+
+.smart-case .mitigation-impact-list p {
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 1.3;
+  min-height: 0;
+  overflow-wrap: break-word;
+  padding: 20px;
+}
+
+.smart-case .mitigation-formula-card dl {
+  gap: 16px 32px;
+}
+
+.smart-case .mitigation-formula-card dl div {
+  gap: 12px;
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+.smart-case .mitigation-formula-card dd {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.smart-case .smart-case-final {
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .smart-case {
+    --case-text-gutter: 32px;
+    --case-media-gutter: 16px;
+    --case-section-gap: 64px;
+    --case-block-gap: 40px;
+    --case-card-pad: 24px;
+    --case-heading-size: 36px;
+    --case-lead-size: 44px;
+  }
+
+  .smart-case .smart-case-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-project-core-list {
+    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-project-core-list article {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .smart-case .smart-case-project-core-list article > strong {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .smart-case .smart-case-project-core-list article > div {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .smart-case .smart-case-role .smart-case-row {
+    gap: 24px;
+    grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr);
+  }
+
+  .smart-case .research-case-outcome blockquote {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .smart-case {
+    --case-text-gutter: 48px;
+    --case-media-gutter: 48px;
+    --case-section-gap: 72px;
+    --case-block-gap: 40px;
+    --case-column-gap: 40px;
+    --case-card-pad: 32px;
+    --case-heading-size: 40px;
+    --case-lead-size: 48px;
+    --case-body-size: 18px;
+    --case-metric-size: 76px;
+  }
+
+  .smart-case :is(.smart-case-section, .smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section),
+  .smart-case .research-case-outcome > header {
+    column-gap: var(--case-column-gap);
+    grid-template-columns: var(--case-columns);
+  }
+
+  .smart-case :is(.smart-case-section, .smart-case-project-core-intro, .smart-case-discovery-intro, .smart-case-key-decision-intro, .smart-case-outcome-section) > :not(.smart-case-eyebrow),
+  .smart-case .research-case-outcome > header > :not(.smart-case-eyebrow) {
+    grid-column: 2;
+  }
+
+  .smart-case .smart-case-role,
+  .smart-case .smart-case-validation,
+  .smart-case .smart-case-key-decision .smart-case-field-research,
+  .smart-case .mitigation-market {
+    column-gap: var(--case-column-gap);
+    grid-template-columns: var(--case-columns);
+  }
+
+  .smart-case .smart-case-role > header {
+    grid-row: 1;
+  }
+
+  .smart-case .smart-case-role > .smart-case-row-list,
+  .smart-case .mitigation-market > .mitigation-pill-rows,
+  .smart-case .smart-case-key-decision .smart-case-field-research > .mitigation-rows,
+  .smart-case .smart-case-validation > .smart-case-table,
+  .smart-case .smart-case-concept-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .smart-case .smart-case-concept-copy {
+    grid-row: auto;
+  }
+
+  .smart-case .smart-case-role .smart-case-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .smart-case .smart-case-meta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-meta strong {
+    font-size: 24px;
+  }
+
+  .smart-case .smart-case-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-metrics article,
+  .smart-case .smart-case-metrics article:nth-child(even) {
+    border: 0;
+    gap: 24px;
+    padding: 16px 24px;
+  }
+
+  .smart-case .smart-case-metrics article:first-child {
+    padding-left: 0;
+  }
+
+  .smart-case .smart-case-metrics article + article {
+    border-left: 1px solid var(--divider);
+  }
+
+  .smart-case .smart-case-metrics article:last-child {
+    padding-right: 0;
+  }
+
+  .smart-case .smart-case-metrics p {
+    font-size: 16px;
+  }
+
+  .smart-case .smart-case-project-core-list {
+    gap: var(--case-column-gap);
+  }
+
+  .smart-case .smart-case-project-core-list article {
+    gap: 24px;
+    padding-bottom: 32px;
+  }
+
+  .smart-case .smart-case-project-core-list article > strong {
+    font-size: 72px;
+  }
+
+  .smart-case .smart-case-key-decision .smart-case-field-stages {
+    gap: 24px;
+    grid-column: 2;
+    grid-row: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-key-decision .smart-case-field-stages-long {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .smart-case .smart-case-key-decision .smart-case-field-stages-long .smart-case-row {
+    grid-column: auto;
+  }
+
+  .smart-case .smart-case-field-stages .smart-case-row:first-child,
+  .smart-case .smart-case-field-stages .smart-case-row {
+    padding-top: 0;
+  }
+
+  .smart-case .smart-case-field-result,
+  .smart-case .smart-case-validation-result .smart-case-ux-decision {
+    grid-column: 1 / -1;
+  }
+
+  .smart-case .smart-case-ux-decision {
+    column-gap: var(--case-column-gap);
+    grid-template-columns: var(--case-columns);
+  }
+
+  .smart-case .smart-case-field-result > header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .smart-case .smart-case-validation > .smart-case-table,
+  .smart-case .smart-case-validation-result > .smart-case-table {
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-validation-result > .smart-case-table {
+    grid-column: 2;
+  }
+
+  .smart-case .smart-case-field-result > .smart-case-table {
+    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .smart-case :is(.smart-case-discovery-panel, .smart-case-validation-panel, .research-case-conclusion),
+  .smart-case .research-case-outcome blockquote {
+    column-gap: var(--case-column-gap);
+    grid-template-columns: var(--case-columns);
+  }
+
+  .smart-case .research-case-conclusion > h2,
+  .smart-case .research-case-outcome blockquote > p:last-child {
+    grid-column: 2;
+  }
+
+  .smart-case .research-case-evidence {
+    column-gap: var(--case-column-gap);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smart-case .research-case-evidence .mitigation-rows {
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .smart-case .research-case-flow > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .smart-case .research-case-flow span {
+    align-items: stretch;
+    display: flex;
+    flex: 1 1 130px;
+    gap: 16px;
+  }
+
+  .smart-case .research-case-flow strong {
+    flex: 1;
+    font-size: 14px;
+    min-height: 64px;
+    overflow-wrap: break-word;
+  }
+
+  .smart-case .smart-case-final-content {
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .smart-case .mitigation-formulas article > span {
+    min-height: 52px;
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics article {
+    padding: 24px 16px 24px 0;
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics article:nth-child(even) {
+    border-left: 1px solid var(--divider-inverse);
+    padding: 24px 0 24px 16px;
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics article:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--divider-inverse);
+  }
+
+  .smart-case .smart-case-final .smart-case-metrics strong {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .smart-case {
+    --case-text-gutter: 64px;
+    --case-media-gutter: 64px;
+    --case-column-gap: 48px;
+    --case-heading-size: 48px;
+    --case-lead-size: 56px;
+    --case-metric-size: 96px;
+  }
+
+  .smart-case .research-case-flow strong {
+    font-size: 16px;
+  }
+}
